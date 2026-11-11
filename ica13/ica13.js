@@ -1,3 +1,4 @@
+
 // setup canvas
 
 const canvas = document.querySelector("canvas");
@@ -18,8 +19,8 @@ function randomRGB() {
   return `rgb(${random(0, 255)},${random(0, 255)},${random(0, 255)})`;
 }
 
-    class Ball {
- constructor(x, y, velX, velY, color, size) {
+class Ball {
+  constructor(x, y, velX, velY, color, size) {
     this.x = x;
     this.y = y;
     this.velX = velX;
@@ -27,12 +28,14 @@ function randomRGB() {
     this.color = color;
     this.size = size;
   }
+
   draw() {
     ctx.beginPath();
     ctx.fillStyle = this.color;
     ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI);
     ctx.fill();
   }
+
   update() {
     if (this.x + this.size >= width) {
       this.velX = -this.velX;
@@ -53,8 +56,7 @@ function randomRGB() {
     this.x += this.velX;
     this.y += this.velY;
   }
-  class Ball {
-  
+
   collisionDetect() {
     for (const ball of balls) {
       if (this !== ball) {
@@ -69,15 +71,13 @@ function randomRGB() {
     }
   }
 }
-}
 
 const balls = [];
 
 while (balls.length < 25) {
   const size = random(10, 20);
+
   const ball = new Ball(
-    // ball position always drawn at least one ball width
-    // away from the edge of the canvas, to avoid drawing errors
     random(0 + size, width - size),
     random(0 + size, height - size),
     random(-7, 7),
@@ -103,4 +103,3 @@ function loop() {
 }
 
 loop();
-}
